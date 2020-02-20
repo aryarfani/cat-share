@@ -7,8 +7,8 @@ class PostTab extends StatefulWidget {
   _PostTabState createState() => _PostTabState();
 }
 
-//* kombinasi AutomaticKeepAliveClientMixin dan runOnce
-// agar tabPost tidak rebuild ketika diganti
+//* menambahkan AutomaticKeepAliveClientMixin dan wantKeepAlive true
+// agar tabPost tidak rebuild ketika mengganti tab
 
 class _PostTabState extends State<PostTab> with AutomaticKeepAliveClientMixin {
   @override
