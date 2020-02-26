@@ -116,7 +116,7 @@ class _AddScreenState extends State<AddScreen> {
       isLoading = false;
     });
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       print('Image Uploaded');
       _displaySnackBar(context: context, text: 'Image Uploaded');
       _clearForm();

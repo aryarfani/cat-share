@@ -44,7 +44,7 @@ class _EditScreenState extends State<EditScreen> {
         kucing = data;
         cNama.text = kucing.nama;
         cJenis.text = kucing.jenis;
-        cUmur.text = kucing.umur;
+        cUmur.text = kucing.umur.toString();
       });
     });
   }
@@ -112,7 +112,7 @@ class _EditScreenState extends State<EditScreen> {
     request.fields['jenis'] = cJenis.text;
     request.fields['umur'] = cUmur.text;
     request.fields['gambar_lama'] = kucing.gambar;
-    request.fields['_method'] = 'put';
+    // request.fields['_method'] = 'put';
 
     var response = await request.send();
 

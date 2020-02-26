@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:crud_kucing/constants/constants.dart';
 import 'package:crud_kucing/models/kucing.dart';
-import 'package:crud_kucing/ui/screens/add_screen.dart';
 import 'package:crud_kucing/ui/screens/detail_screen.dart';
 import 'package:crud_kucing/utils/intsize.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,8 @@ class PostGrid extends StatelessWidget {
           return InkWell(
             onTap: () {
               int id = kucings[index].id;
-              Navigator.pushNamed(context, 'add', arguments: {id: id});
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => DetailScreen(id: id)));
             },
             child: Container(
               width: _sizes[index].width.toDouble(),

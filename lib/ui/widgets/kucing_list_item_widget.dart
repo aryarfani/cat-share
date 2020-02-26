@@ -27,14 +27,17 @@ class KucingPostItem extends StatelessWidget {
             ],
           ),
           SizedBox(height: 6),
-          Container(
-            width: MediaQuery.of(context).size.width - 10,
-            height: MediaQuery.of(context).size.width / 1.2,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(
-                image: NetworkImage('${Constants.linkGambar}/${kucings[index].gambar}'),
-                fit: BoxFit.cover,
+          Hero(
+            tag: 'image${kucings[index].id}',
+            child: Container(
+              width: MediaQuery.of(context).size.width - 10,
+              height: MediaQuery.of(context).size.width / 1.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                  image: NetworkImage('${Constants.linkGambar}/${kucings[index].gambar}'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

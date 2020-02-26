@@ -6,7 +6,7 @@ class Kucing {
   final int id;
   final String nama;
   final String jenis;
-  final String umur;
+  final int umur;
   final String harga;
   final String gambar;
 
@@ -17,8 +17,7 @@ class Kucing {
       id: json['id'],
       nama: json['nama'],
       jenis: json['jenis'],
-      umur: json['umur'].toString(),
-      harga: json['harga'],
+      umur: json['umur'],
       gambar: json['gambar'],
     );
   }
@@ -26,7 +25,9 @@ class Kucing {
   static Future<List<Kucing>> getKucings() async {
     var res = await http.get(Constants.linkApi);
     var jsonObject = await json.decode(res.body);
-    List<dynamic> listKucing = (jsonObject as Map<String, dynamic>)['data'];
+    print(jsonObject);
+    // List<dynamic> listKucing = (jsonObject as Map<String, dynamic>)['data'];
+    List<dynamic> listKucing = jsonObject;
     List<Kucing> kucings = [];
     for (int i = 0; i < listKucing.length; i++) {
       kucings.add(Kucing.createKucing(listKucing[i]));
@@ -38,10 +39,11 @@ class Kucing {
 
   static Future<Kucing> getKucing(var id) async {
     var res = await http.get(Constants.linkApi + '/$id');
+    print(Constants.linkApi + '/$id');
     var jsonObject = await json.decode(res.body);
 
     print('getKucing done');
-    return Kucing.createKucing(jsonObject['data']);
+    return Kucing.createKucing(jsonObject);
   }
 
   static deleteKucing(var id) async {

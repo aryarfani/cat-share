@@ -34,7 +34,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(kucing.gambar);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -62,9 +61,8 @@ class _DetailScreenState extends State<DetailScreen> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ZoomPhoto(
-                                  imageProvider:
-                                      NetworkImage(Constants.linkGambar + '/' + kucing.gambar),
-                                )));
+                                imageProvider:
+                                    NetworkImage(Constants.linkGambar + '/' + kucing.gambar))));
                   },
                   child: Container(
                     constraints: BoxConstraints(maxHeight: 320),
@@ -138,7 +136,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                                 SizedBox(height: 5),
                                 Text(
-                                  kucing.umur,
+                                  kucing.umur.toString(),
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey[900],
