@@ -11,15 +11,15 @@ import 'package:async/async.dart';
 import 'package:image/image.dart' as Img;
 import 'package:path_provider/path_provider.dart';
 
-class EditKucing extends StatefulWidget {
-  EditKucing(var this.id);
+class EditScreen extends StatefulWidget {
+  EditScreen({var this.id});
   final id;
 
   @override
-  _EditKucingState createState() => _EditKucingState();
+  _EditScreenState createState() => _EditScreenState();
 }
 
-class _EditKucingState extends State<EditKucing> {
+class _EditScreenState extends State<EditScreen> {
   File _image;
   bool isLoading = false;
   final _scaffoldKey = GlobalKey<ScaffoldState>();

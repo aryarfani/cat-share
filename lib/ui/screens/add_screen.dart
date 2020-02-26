@@ -11,12 +11,13 @@ import 'package:async/async.dart';
 import 'package:image/image.dart' as Img;
 import 'package:path_provider/path_provider.dart';
 
-class AddKucing extends StatefulWidget {
+class AddScreen extends StatefulWidget {
   @override
-  _AddKucingState createState() => _AddKucingState();
+  _AddScreenState createState() => _AddScreenState();
 }
 
-class _AddKucingState extends State<AddKucing> {
+class _AddScreenState extends State<AddScreen> {
+  static String routeName = 'add';
   File _image;
   bool isLoading = false;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -42,7 +43,7 @@ class _AddKucingState extends State<AddKucing> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => HomePage(
+            builder: (context) => HomeScreen(
                   insertedIndex: 0,
                 )));
     return true;

@@ -1,12 +1,13 @@
+import 'package:crud_kucing/ui/widgets/drawer_user_widget.dart';
 import 'package:crud_kucing/ui/widgets/post_tab_widget.dart';
 import 'package:flutter/material.dart';
 
-class UserPage extends StatefulWidget {
+class UserScreen extends StatefulWidget {
   @override
-  _UserPageState createState() => _UserPageState();
+  _UserScreenState createState() => _UserScreenState();
 }
 
-class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin {
+class _UserScreenState extends State<UserScreen> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   @override
@@ -29,6 +30,7 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        endDrawer: DrawerUser(),
         body: NestedScrollView(
           headerSliverBuilder: (context, value) {
             return [

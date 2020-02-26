@@ -1,17 +1,18 @@
 import 'package:crud_kucing/ui/screens/add_screen.dart';
 import 'package:crud_kucing/ui/screens/kucing_list_screen.dart';
 import 'package:crud_kucing/ui/screens/user_screen.dart';
+import 'package:crud_kucing/ui/widgets/drawer_user_widget.dart';
 
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   final int insertedIndex;
-  HomePage({this.insertedIndex});
+  HomeScreen({this.insertedIndex});
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   static int _selectedIndex = 0;
 
   @override
@@ -23,11 +24,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> onItemTapped(int index) async {
-    //* Add button pushed will be pushed to addKucing screen and pass back value using BackButtonInterceptor
+    //* if button pressed, it will be pushed to addKucing screen and pass back value using BackButtonInterceptor
     if (index == 1) {
-      var cek = await Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
-        return AddKucing();
-      }));
+      var cek = await Navigator.of(context).pushReplacementNamed('add');
       if (cek != null) {
         print('working interception');
         onItemTapped(0);
@@ -45,12 +44,13 @@ class _HomePageState extends State<HomePage> {
   List<Widget> screenList = [
     KucingList(),
     Container(),
-    UserPage(),
+    UserScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerUser(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

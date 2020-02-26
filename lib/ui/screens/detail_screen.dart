@@ -5,15 +5,15 @@ import 'package:crud_kucing/ui/widgets/zoom_photo.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_kucing/models/kucing.dart';
 
-class DetailKucing extends StatefulWidget {
-  DetailKucing(var this.id);
+class DetailScreen extends StatefulWidget {
+  DetailScreen({var this.id});
   final id;
 
   @override
-  _DetailKucingState createState() => _DetailKucingState();
+  _DetailScreenState createState() => _DetailScreenState();
 }
 
-class _DetailKucingState extends State<DetailKucing> {
+class _DetailScreenState extends State<DetailScreen> {
   Kucing kucing = Kucing();
 
   @override
@@ -24,14 +24,17 @@ class _DetailKucingState extends State<DetailKucing> {
 
   void _populateKucing() {
     Kucing.getKucing(widget.id).then((data) {
-      setState(() {
-        kucing = data;
-      });
+      if (mounted) {
+        setState(() {
+          kucing = data;
+        });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(kucing.gambar);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -198,7 +201,7 @@ class _DetailKucingState extends State<DetailKucing> {
                                   var _cekIfUpdated = await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => EditKucing(kucing.id)));
+                                          builder: (context) => EditScreen(id: kucing.id)));
                                   if (_cekIfUpdated != null) {
                                     Navigator.of(context).pop(true);
                                   }

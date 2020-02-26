@@ -71,7 +71,7 @@ class _KucingListState extends State<KucingList> {
                   // mengambil tindakan jika di hapus dengan kembalian paramater true
                   var result = await Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DetailKucing(id)),
+                    MaterialPageRoute(builder: (context) => DetailScreen(id: id)),
                   );
 
                   if (result != null) {
