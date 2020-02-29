@@ -28,7 +28,9 @@ class RegistrationScreen extends StatelessWidget {
               Spacer(),
               RoundedButton(
                 text: 'Sign Up',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'signin');
+                },
               ),
               SizedBox(height: 20),
               RoundedButton(

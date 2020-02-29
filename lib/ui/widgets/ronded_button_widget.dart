@@ -13,7 +13,7 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(15.0),
       child: Text(
         text,
         style: GoogleFonts.openSans(fontSize: 15, fontWeight: FontWeight.w500),
