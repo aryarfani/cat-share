@@ -1,6 +1,7 @@
 import 'package:crud_kucing/ui/screens/kucing_list_screen.dart';
 import 'package:crud_kucing/ui/screens/user_screen.dart';
 import 'package:crud_kucing/ui/widgets/drawer_user_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,11 +13,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedUser;
+
+  getCurrentUser() async {
+    try {
+      loggedUser = await _auth.currentUser();
+      print(loggedUser.email);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   static int _selectedIndex = 0;
 
   @override
   initState() {
     super.initState();
+    getCurrentUser();
     if (widget.insertedIndex != null) {
       onItemTapped(widget.insertedIndex);
     }

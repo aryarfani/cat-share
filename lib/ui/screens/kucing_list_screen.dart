@@ -2,6 +2,7 @@ import 'package:crud_kucing/models/kucing.dart';
 import 'package:crud_kucing/ui/screens/detail_screen.dart';
 import 'package:crud_kucing/ui/widgets/kucing_list_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class KucingList extends StatefulWidget {
   @override
@@ -42,11 +43,13 @@ class _KucingListState extends State<KucingList> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white70,
+        backgroundColor: Color(0xFFFF7F56),
         title: Text(
-          'Purr Lovers',
-          style: TextStyle(
-            color: Colors.black87,
+          'Catshare',
+          style: GoogleFonts.pacifico(
+            color: Colors.white,
+            fontWeight: FontWeight.w300,
+            fontSize: 23,
           ),
         ),
       ),
