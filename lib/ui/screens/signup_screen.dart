@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
   final _auth = FirebaseAuth.instance;
   TextEditingController cEmail = TextEditingController();
   TextEditingController cPassword = TextEditingController();
@@ -14,7 +14,6 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: SingleChildScrollView(
           reverse: true,
@@ -32,7 +31,7 @@ class SignInScreen extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: 20,
+                    vertical: 15,
                     horizontal: 40,
                   ),
                   child: Column(
@@ -45,7 +44,8 @@ class SignInScreen extends StatelessWidget {
                       SizedBox(height: 10),
                       Text(
                         'Embark your journey to the cat world',
-                        style: GoogleFonts.lato(fontSize: 20),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.lato(fontSize: 15),
                       ),
                     ],
                   ),
@@ -65,7 +65,7 @@ class SignInScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Welcome Back',
+                            'New \nAccount',
                             style: GoogleFonts.openSans(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -85,39 +85,33 @@ class SignInScreen extends StatelessWidget {
                       TextFieldWidget(
                         title: 'Email',
                         hintText: 'Insert your email',
-                        icon: Icons.mail_outline,
                         cText: cEmail,
+                        icon: Icons.mail_outline,
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 20),
+                      // TextFieldWidget(
+                      //   title: 'Username',
+                      //   hintText: 'Insert your name',
+                      //   icon: Icons.person_outline,
+                      // ),
+                      // SizedBox(height: 20),
                       TextFieldWidget(
                         title: 'Password',
+                        cText: cPassword,
                         hintText: 'Insert your password',
                         icon: Icons.vpn_key,
-                        cText: cPassword,
                         isPassword: true,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Forgot Password?',
-                        textAlign: TextAlign.right,
-                        style: GoogleFonts.openSans(
-                          color: Color(0xFFFF7F56),
-                          fontSize: 12,
-                        ),
                       ),
                       SizedBox(height: 20),
                       RoundedButton(
-                        text: 'Sign In',
+                        text: 'Sign Up',
                         onPressed: () async {
+                          // Navigator.pushReplacementNamed(context, 'home');
                           try {
-                            var res = await _auth.signInWithEmailAndPassword(
+                            final newUser = await _auth.createUserWithEmailAndPassword(
                                 email: cEmail.text, password: cPassword.text);
-                            var user = res.user;
-                            if (user != null) {
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, 'home', ModalRoute.withName('home'));
-                            }
+                            print(newUser.additionalUserInfo);
                           } catch (e) {
                             print(e);
                           }

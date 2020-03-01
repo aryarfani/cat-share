@@ -4,6 +4,7 @@ import 'package:crud_kucing/ui/screens/edit_screen.dart';
 import 'package:crud_kucing/ui/screens/home_screen.dart';
 import 'package:crud_kucing/ui/screens/registration_screen.dart';
 import 'package:crud_kucing/ui/screens/signin_screen.dart';
+import 'package:crud_kucing/ui/screens/signup_screen.dart';
 import 'package:crud_kucing/ui/screens/splash_screen.dart';
 import 'package:crud_kucing/ui/screens/user_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CRUD Kucing',
-      initialRoute: 'registration',
+      initialRoute: 'splash',
       debugShowCheckedModeBanner: false,
       routes: {
         'splash': (context) => SplashScreen(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         'edit': (context) => EditScreen(),
         'registration': (context) => RegistrationScreen(),
         'user': (context) => UserScreen(),
+        'signup': (context) => SignUpScreen(),
         'signin': (context) => SignInScreen(),
       },
     );

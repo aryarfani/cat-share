@@ -29,13 +29,15 @@ class RegistrationScreen extends StatelessWidget {
               RoundedButton(
                 text: 'Sign Up',
                 onPressed: () {
-                  Navigator.pushNamed(context, 'signin');
+                  Navigator.pushNamed(context, 'signup');
                 },
               ),
               SizedBox(height: 20),
               RoundedButton(
                 text: 'Sign In',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'signin');
+                },
                 color: Colors.white,
                 textColor: Color(0xFFFF7F56),
               )

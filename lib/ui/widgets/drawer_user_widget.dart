@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DrawerUser extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +38,8 @@ class DrawerUser extends StatelessWidget {
               trailing: Icon(Icons.lock_open),
               title: Text('Log Out'),
               onTap: () {
-                Navigator.pop(context);
+                _auth.signOut();
+                Navigator.pushReplacementNamed(context, 'registration');
               },
             ),
           ],

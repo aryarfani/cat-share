@@ -6,8 +6,16 @@ class TextFieldWidget extends StatelessWidget {
   final IconData icon;
   final String hintText;
   final String title;
+  final TextInputType keyboardType;
+  final bool isPassword;
 
-  const TextFieldWidget({this.cText, this.icon, this.hintText, this.title});
+  const TextFieldWidget(
+      {this.cText,
+      this.icon,
+      this.hintText,
+      this.title,
+      this.keyboardType,
+      this.isPassword = false});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,6 +45,8 @@ class TextFieldWidget extends StatelessWidget {
                     MediaQuery.of(context).size.width - 0.3 * MediaQuery.of(context).size.width,
               ),
               child: TextField(
+                obscureText: isPassword,
+                keyboardType: keyboardType,
                 style: GoogleFonts.lato(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,

@@ -25,7 +25,6 @@ class Kucing {
   static Future<List<Kucing>> getKucings() async {
     var res = await http.get(Constants.linkApi);
     var jsonObject = await json.decode(res.body);
-    print(jsonObject);
     // List<dynamic> listKucing = (jsonObject as Map<String, dynamic>)['data'];
     List<dynamic> listKucing = jsonObject;
     List<Kucing> kucings = [];
@@ -39,10 +38,9 @@ class Kucing {
 
   static Future<Kucing> getKucing(var id) async {
     var res = await http.get(Constants.linkApi + '/$id');
-    print(Constants.linkApi + '/$id');
     var jsonObject = await json.decode(res.body);
 
-    print('getKucing done');
+    print('getKucing $id done');
     return Kucing.createKucing(jsonObject);
   }
 

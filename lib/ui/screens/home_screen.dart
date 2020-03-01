@@ -29,13 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
       if (cek != null) {
         print('working interception');
         onItemTapped(0);
-        print('yup');
       }
     }
     if (mounted) {
       setState(() {
         _selectedIndex = index;
-        print(_selectedIndex);
       });
     }
   }
