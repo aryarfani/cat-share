@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.lightBlueAccent[600],
+        selectedItemColor: Color(0xFFFF7F56),
         onTap: onItemTapped,
       ),
       //* Untuk mencegah screen rebuild ketika diganti

@@ -42,48 +42,58 @@ class _KucingListState extends State<KucingList> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFF7F56),
-        title: Text(
-          'Catshare',
-          style: GoogleFonts.pacifico(
-            color: Colors.white,
-            fontWeight: FontWeight.w300,
-            fontSize: 23,
-          ),
-        ),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: RefreshIndicator(
-          key: _refreshIndicatorKey,
-          onRefresh: _refreshKucings,
-          child: ListView.builder(
-            padding: EdgeInsets.fromLTRB(10, 10, 5, 0),
-            shrinkWrap: true,
-            itemCount: _kucings.length == null ? 0 : _kucings.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                child: KucingPostItem(
-                  context: context,
-                  index: index,
-                  kucings: _kucings,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, isScolled) {
+          return [
+            SliverAppBar(
+              backgroundColor: Color(0xFFFF7F56),
+              snap: true,
+              floating: true,
+              forceElevated: isScolled,
+              title: Text(
+                'Catshare',
+                style: GoogleFonts.pacifico(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 23,
                 ),
-                onTap: () async {
-                  int id = _kucings[index].id;
-                  // mengambil tindakan jika di hapus dengan kembalian paramater true
-                  var result = await Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DetailScreen(id: id)),
-                  );
+              ),
+            )
+          ];
+        },
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          child: RefreshIndicator(
+            key: _refreshIndicatorKey,
+            onRefresh: _refreshKucings,
+            child: ListView.builder(
+              padding: EdgeInsets.fromLTRB(10, 10, 5, 0),
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: _kucings.length == null ? 0 : _kucings.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  child: KucingPostItem(
+                    context: context,
+                    index: index,
+                    kucings: _kucings,
+                  ),
+                  onTap: () async {
+                    int id = _kucings[index].id;
+                    // mengambil tindakan jika di hapus dengan kembalian paramater true
+                    var result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailScreen(id: id)),
+                    );
 
-                  if (result != null) {
-                    // memprosess dengan mentrigger refresh indicator
-                    _refreshIndicatorKey.currentState.show();
-                  }
-                },
-              );
-            },
+                    if (result != null) {
+                      // memprosess dengan mentrigger refresh indicator
+                      _refreshIndicatorKey.currentState.show();
+                    }
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),

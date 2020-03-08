@@ -2,6 +2,9 @@ import 'dart:io';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:crud_kucing/constants/constants.dart';
 import 'package:crud_kucing/ui/screens/home_screen.dart';
+import 'package:crud_kucing/ui/widgets/ronded_button_widget.dart';
+import 'package:crud_kucing/ui/widgets/text_field_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/material.dart';
@@ -131,6 +134,7 @@ class _AddScreenState extends State<AddScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Upload Image'),
+        backgroundColor: Color(0xFFFF7F56),
       ),
       body: ModalProgressHUD(
         inAsyncCall: isLoading,
@@ -176,7 +180,19 @@ class _AddScreenState extends State<AddScreen> {
                 ),
                 TextField(
                   controller: cNama,
-                  decoration: InputDecoration(hintText: "Nama"),
+                  style: GoogleFonts.lato(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: "Nama",
+                    hintStyle: GoogleFonts.lato(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
                 TextField(
                   controller: cJenis,
@@ -188,13 +204,9 @@ class _AddScreenState extends State<AddScreen> {
                   decoration: InputDecoration(hintText: "Umur"),
                 ),
                 SizedBox(height: 10),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    side: BorderSide(color: Colors.blueAccent),
-                  ),
-                  child: Text('Post'),
-                  color: Colors.lightBlueAccent,
+                RoundedButton(
+                  color: Color(0xFFFF7F56),
+                  text: 'Post',
                   textColor: Colors.white,
                   onPressed: () {
                     upload(_image, context);
